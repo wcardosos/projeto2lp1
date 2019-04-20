@@ -53,17 +53,8 @@ public class Torre extends Peca {
     
     }
 
-    public boolean captura(Casa destino) {
-    	if(destino.getPeca() != null && destino.getPeca().getCor() != cor) {
-    		return true;
-    	}
-    	else {
-    		return false;
-    	}
-    }
-
-    public boolean podeMover(Casa destino) {
-    	if(destino.getPeca() == null) {
+    public boolean movimentoValido(Casa destino) {
+    	if(casa.getX() == destino.getX() || casa.getY() == destino.getY()) {
     		return true;
     	}
     	else {

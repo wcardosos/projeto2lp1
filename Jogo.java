@@ -21,75 +21,71 @@ public class Jogo {
     private void criarPecas() {
         Casa casa;
         Peca peca;
-
-        casa = tabuleiro.getCasa(0,0);
-        peca = new Torre(casa, 'b');
-
-        casa = tabuleiro.getCasa(7,0);
-        peca = new Torre(casa, 'b');
-
-        casa = tabuleiro.getCasa(0,7);
-        peca = new Torre(casa, 'p');
-
-        casa = tabuleiro.getCasa(7,7);
-        peca = new Torre(casa, 'p');
-
-        /*for(int y = 0; y < 8; y++) {
+        
+        for(int y = 0; y < 8; y++) {
             for(int x = 0; x < 8; x++) {
                 if(y == 0) {
                     if(x == 0 || x ==7) {
                         casa = tabuleiro.getCasa(x, y);
-                        peca = new Peca(casa, Peca.TORRE_BRANCA);
+                        peca = new Torre(casa, 'b');
                     }
                     else if(x == 1 || x == 6) {
+                        /* PEÇA CAVALO BRANCO
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Peca(casa, Peca.CAVALO_BRANCO);
+                        */
                     }
                     else if(x == 2 || x == 5) {
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Peca(casa, Peca.BISPO_BRANCO);
+                        peca = new Bispo(casa, 'b');
                     }
                     else if(x == 3) {
+                        /* RAINHA BRANCA
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Peca(casa, Peca.RAINHA_BRANCA);
+                        */
                     }
                     else {
+                        /* REI BRANCO
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Peca(casa, Peca.REI_BRANCO);
+                        */
                     }
                 }
                 else if(y == 7) {
                     if(x == 0 || x ==7) {
                         casa = tabuleiro.getCasa(x, y);
-                        peca = new Peca(casa, Peca.TORRE_PRETA);
+                        peca = new Torre(casa, 'p');
                     }
                     else if(x == 1 || x == 6) {
+                        /* PEÇA CAVALO PRETO
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Peca(casa, Peca.CAVALO_PRETO);
+                        */
                     }
                     else if(x == 2 || x == 5) {
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Peca(casa, Peca.BISPO_PRETO);
+                        peca = new Bispo(casa, 'p');
                     }
                     else if(x == 3) {
+                        /* RAINHA PRETA
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Peca(casa, Peca.RAINHA_PRETA);
+                        */
                     }
                     else {
+                        /* REI PRETO
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Peca(casa, Peca.REI_PRETO);
+                        */
                     }
                 }
                 else if(y == 1) {
+                    /* PEÃO BRANCO
                     casa = tabuleiro.getCasa(x,y);
-                    peca = new Peca(casa, Peca.PEAO_BRANCO);
+                    */
                 }
                 else if(y == 6) {
+                    /* PEÃO PRETO
                     casa = tabuleiro.getCasa(x,y);
-                    peca = new Peca(casa, Peca.PEAO_PRETO);
+                    */
                 }
             }
-        }*/
+        }
     }
     
     /**

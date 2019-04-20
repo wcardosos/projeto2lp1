@@ -16,6 +16,9 @@ public abstract class Peca {
         this.cor = cor;
         casa.colocarPeca(this);
     }
+
+    public abstract boolean haPecas(Tabuleiro tabuleiro, Casa destino);
+    public abstract boolean movimentoValido(Casa destino);
     
     /**
      * Movimenta a peca para uma nova casa.
@@ -27,19 +30,23 @@ public abstract class Peca {
         casa = destino;
     }
 
-    public boolean limite(int pos) {
-        if (pos < 0) {
-            return false;
-        } else if (pos > 7) {
-            return false;
-        } else {
+    public boolean podeMover(Casa destino) {
+        if(movimentoValido(destino) && destino.getPeca() == null) {
             return true;
+        }
+        else {
+            return false;
         }
     }
 
-    public abstract boolean haPecas(Tabuleiro tabuleiro, Casa destino);
-    public abstract boolean podeMover(Casa destino);
-    public abstract boolean captura(Casa destino);
+    public boolean captura(Casa destino) {
+        if(movimentoValido(destino) && destino.getPeca() != null && destino.getPeca().getCor() != cor) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     public char getCor() {
         return cor;
