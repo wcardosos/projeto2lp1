@@ -13,6 +13,13 @@ public class Peao extends Peca {
 		this.captura = false;
 	}
 
+	public void mover(Casa destino) {
+        casa.removerPeca();
+        destino.colocarPeca(this);
+        casa = destino;
+        verificarPromocao();
+    }
+
 	public boolean haPecas(Tabuleiro tabuleiro, Casa destino) {
 		return false;
 	}
@@ -49,6 +56,20 @@ public class Peao extends Peca {
 		}
 		else {
 			return captura;
+		}
+	}
+
+	public void verificarPromocao() {
+		if(direcao == 1) {
+			if(casa.getY() == 7) {
+				System.out.println("Peão promovido");
+				promocao = true;
+			}
+		}
+		else if(direcao == -1) {
+			if(casa.getY() == 0) {
+				promocao = true;
+			}
 		}
 	}
 
