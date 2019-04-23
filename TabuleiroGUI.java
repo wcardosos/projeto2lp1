@@ -1,5 +1,4 @@
 
-
 import java.awt.Color;
 import javax.swing.JPanel;
 
@@ -76,31 +75,38 @@ public class TabuleiroGUI extends JPanel {
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
                 CasaGUI casaGUI = casas[x][y];
-                
                 Tabuleiro tabuleiro = jogo.getTabuleiro();
                 Casa casa = tabuleiro.getCasa(x, y);
+                
                 if (casa.possuiPeca()) {
                     Peca peca = casa.getPeca();
-                    
+
                     if(peca.getCor() == 'b') {
                         if(peca instanceof Torre) {
                             casaGUI.desenharTorreBranca();
                         }
-                        else if(peca instanceof Bispo){
-                            casaGUI.desenharBispoBranco();                            
+                        else if(peca instanceof Bispo) {
+                            casaGUI.desenharBispoBranco();
                         }
-                        else if(peca instanceof Cavalo){
+                        else if(peca instanceof Rainha) {
+                            casaGUI.desenharRainhaBranca();
+                        }
+                        else if(peca instanceof Cavalo) {
                             casaGUI.desenharCavaloBranco();
                         }
                     }
+
                     else {
                         if(peca instanceof Torre) {
                             casaGUI.desenharTorrePreta();
                         }
-                        else if(peca instanceof Bispo){
+                        else if(peca instanceof Bispo) {
                             casaGUI.desenharBispoPreto();
                         }
-                        else if(peca instanceof Cavalo){
+                        else if(peca instanceof Rainha) {
+                            casaGUI.desenharRainhaPreta();
+                        }
+                        else if(peca instanceof Cavalo) {
                             casaGUI.desenharCavaloPreto();
                         }
                     }

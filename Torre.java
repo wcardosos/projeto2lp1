@@ -28,7 +28,7 @@ public class Torre extends Peca {
            	}
         	else if(destino.getY() == casa.getY()) {
          		if(destino.getX() > casa.getX()) {
-          			for(int x = casa.getX() + 1; x < destino.getY(); x++) {
+          			for(int x = casa.getX() + 1; x < destino.getX(); x++) {
            				if(tabuleiro.getCasa(x, casa.getY()).getPeca() != null) {
            					haPecas = true;
            					break;
@@ -54,12 +54,12 @@ public class Torre extends Peca {
     }
 
     public boolean movimentoValido(Casa destino) {
-    	if(casa.getX() == destino.getX() || casa.getY() == destino.getY()) {
-    		return true;
-    	}
-    	else {
-    		return false;
-    	}
-    }
+		if(casa.getX() == destino.getX() || casa.getY() == destino.getY()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 
 }
