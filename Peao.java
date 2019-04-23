@@ -62,7 +62,6 @@ public class Peao extends Peca {
 	public void verificarPromocao() {
 		if(direcao == 1) {
 			if(casa.getY() == 7) {
-				System.out.println("Peão promovido");
 				promocao = true;
 			}
 		}
