@@ -30,9 +30,8 @@ public class Jogo {
                         peca = new Torre(casa, 'b');
                     }
                     else if(x == 1 || x == 6) {
-                        /* PEÇA CAVALO BRANCO
                         casa = tabuleiro.getCasa(x,y);
-                        */
+                        peca = new Cavalo(casa, 'b');
                     }
                     else if(x == 2 || x == 5) {
                         casa = tabuleiro.getCasa(x,y);
@@ -54,9 +53,8 @@ public class Jogo {
                         peca = new Torre(casa, 'p');
                     }
                     else if(x == 1 || x == 6) {
-                        /* PEÇA CAVALO PRETO
                         casa = tabuleiro.getCasa(x,y);
-                        */
+                        peca = new Cavalo(casa, 'p');
                     }
                     else if(x == 2 || x == 5) {
                         casa = tabuleiro.getCasa(x,y);
@@ -73,14 +71,12 @@ public class Jogo {
                     }
                 }
                 else if(y == 1) {
-                    /* PEÃO BRANCO
                     casa = tabuleiro.getCasa(x,y);
-                    */
+                    peca = new Peao(casa, 'b', 1);
                 }
                 else if(y == 6) {
-                    /* PEÃO PRETO
                     casa = tabuleiro.getCasa(x,y);
-                    */
+                    peca = new Peao(casa, 'p', -1);
                 }
             }
         }

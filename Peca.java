@@ -31,7 +31,7 @@ public abstract class Peca {
     }
 
     public boolean podeMover(Casa destino) {
-        if(movimentoValido(destino) && destino.getPeca() == null) {
+        if(destino.getPeca() == null) {
             return true;
         }
         else {
@@ -40,7 +40,7 @@ public abstract class Peca {
     }
 
     public boolean captura(Casa destino) {
-        if(movimentoValido(destino) && destino.getPeca() != null && destino.getPeca().getCor() != cor) {
+        if(destino.getPeca() != null && destino.getPeca().getCor() != cor) {
             return true;
         }
         else {

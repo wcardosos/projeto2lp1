@@ -94,6 +94,9 @@ public class TabuleiroGUI extends JPanel {
                         else if(peca instanceof Cavalo) {
                             casaGUI.desenharCavaloBranco();
                         }
+                        else if(peca instanceof Peao) {
+                            casaGUI.desenharPeaoBranco();
+                        }
                     }
 
                     else {
@@ -108,6 +111,9 @@ public class TabuleiroGUI extends JPanel {
                         }
                         else if(peca instanceof Cavalo) {
                             casaGUI.desenharCavaloPreto();
+                        }
+                        else if(peca instanceof Peao) {
+                            casaGUI.desenharPeaoPreto();
                         }
                     }
                 }
