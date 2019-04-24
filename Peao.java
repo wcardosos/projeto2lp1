@@ -5,7 +5,7 @@ public class Peao extends Peca {
 	private boolean promocao;
 	private boolean captura;
 
-	public Peao(Casa casa, char cor, int direcao) {
+	public Peao(Casa casa, char cor, int sentido) {
 		super(casa, cor);
 		this.sentido = sentido;
 		this.movimentos = 0;
