@@ -1,13 +1,13 @@
 public class Peao extends Peca {
 
-	private int direcao;
+	private int sentido;
 	private int movimentos;
 	private boolean promocao;
 	private boolean captura;
 
 	public Peao(Casa casa, char cor, int direcao) {
 		super(casa, cor);
-		this.direcao = direcao;
+		this.sentido = sentido;
 		this.movimentos = 0;
 		this.promocao = false;
 		this.captura = false;
@@ -27,14 +27,14 @@ public class Peao extends Peca {
 	public boolean movimentoValido(Casa destino) {
 		boolean movimentoValido = false;
 		if (movimentos < 1) {
-			if(destino.getX() == casa.getX() && (destino.getY() == casa.getY() + direcao || destino.getY() == casa.getY() + (2 * direcao))) {
+			if(destino.getX() == casa.getX() && (destino.getY() == casa.getY() + sentido || destino.getY() == casa.getY() + (2 * sentido))) {
 				movimentos++;
 				movimentoValido = true;
 				mover(destino);
 			}
 
 		}
-		if(destino.getY() == casa.getY() + direcao) {
+		if(destino.getY() == casa.getY() + sentido) {
 			if((destino.getX() == casa.getX() + 1 || destino.getX() == casa.getX() - 1) && destino.getPeca() != null) {
 				if(destino.getPeca().getCor() != cor) {
 					captura = true;
