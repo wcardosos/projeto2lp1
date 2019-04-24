@@ -1,7 +1,7 @@
 public class Peao extends Peca {
 
-	private int sentido;
-	private int movimentos;
+	private int sentido; // Sentido -> cima, baixo ; Direcao -> vertical, horizontal
+	private int movimentos; 
 	private boolean promocao;
 	private boolean captura;
 
@@ -61,14 +61,14 @@ public class Peao extends Peca {
 	}
 
 	public void verificarPromocao() {
-		if(direcao == 1) {
+		if(sentido == 1) {
 			if(casa.getY() == 7) {
 				Peca peca = casa.getPeca();
 	        		peca = new Rainha(casa, 'b');
 				promocao = true;
 			}
 		}
-		else if(direcao == -1) {
+		else if(sentido == -1) {
 			if(casa.getY() == 0) {
 				Peca peca = casa.getPeca();
 	        		peca = new Rainha(casa, 'p');
