@@ -30,6 +30,7 @@ public class Peao extends Peca {
 			if(destino.getX() == casa.getX() && (destino.getY() == casa.getY() + direcao || destino.getY() == casa.getY() + (2 * direcao))) {
 				movimentos++;
 				movimentoValido = true;
+				mover(destino);
 			}
 
 		}
@@ -62,11 +63,15 @@ public class Peao extends Peca {
 	public void verificarPromocao() {
 		if(direcao == 1) {
 			if(casa.getY() == 7) {
+				Peca peca = casa.getPeca();
+	        		peca = new Rainha(casa, 'b');
 				promocao = true;
 			}
 		}
 		else if(direcao == -1) {
 			if(casa.getY() == 0) {
+				Peca peca = casa.getPeca();
+	        		peca = new Rainha(casa, 'p');
 				promocao = true;
 			}
 		}
