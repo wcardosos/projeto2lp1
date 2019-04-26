@@ -1,8 +1,8 @@
 public class Cavalo extends Peca
 {
 
-    public Cavalo(Casa casa, char cor) {
-        super(casa, cor);
+    public Cavalo(Casa casa, Jogador jogador) {
+        super(casa, jogador);
     }
 
     public boolean haPecas(Tabuleiro tabuleiro, Casa destino) {

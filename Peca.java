@@ -9,11 +9,11 @@
 public abstract class Peca {
 
     protected Casa casa;
-    protected char cor;
+    protected Jogador jogador;
 
-    public Peca(Casa casa, char cor) {
+    public Peca(Casa casa, Jogador jogador) {
         this.casa = casa;
-        this.cor = cor;
+        this.jogador = jogador;
         casa.colocarPeca(this);
     }
 
@@ -40,7 +40,7 @@ public abstract class Peca {
     }
 
     public boolean captura(Casa destino) {
-        if(destino.getPeca() != null && destino.getPeca().getCor() != cor) {
+        if(destino.getPeca() != null && destino.getPeca().getJogador() != jogador) {
             return true;
         }
         else {
@@ -48,7 +48,7 @@ public abstract class Peca {
         }
     }
 
-    public char getCor() {
-        return cor;
+    public Jogador getJogador() {
+        return jogador;
     }
 }

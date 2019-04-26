@@ -8,9 +8,13 @@
 public class Jogo {
 
     private Tabuleiro tabuleiro;
+    private Jogador jogadorPecasBrancas;
+    private Jogador jogadorPecasPretas;
 
     public Jogo() {
         tabuleiro = new Tabuleiro();
+        jogadorPecasBrancas = new Jogador();
+        jogadorPecasPretas = new Jogador();
         criarPecas();
     }
     
@@ -27,56 +31,66 @@ public class Jogo {
                 if(y == 0) {
                     if(x == 0 || x ==7) {
                         casa = tabuleiro.getCasa(x, y);
-                        peca = new Torre(casa, 'b');
+                        peca = new Torre(casa, jogadorPecasBrancas);
+                        jogadorPecasBrancas.adicionarPeca(peca);
                     }
                     else if(x == 1 || x == 6) {
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Cavalo(casa, 'b');
+                        peca = new Cavalo(casa, jogadorPecasBrancas);
+                        jogadorPecasBrancas.adicionarPeca(peca);
                     }
                     else if(x == 2 || x == 5) {
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Bispo(casa, 'b');
+                        peca = new Bispo(casa, jogadorPecasBrancas);
+                        jogadorPecasBrancas.adicionarPeca(peca);
                     }
                     else if(x == 3) {
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Rainha(casa, 'b');
+                        peca = new Rainha(casa, jogadorPecasBrancas);
+                        jogadorPecasBrancas.adicionarPeca(peca);
                     }
                     else {
-                        /* REI BRANCO
                         casa = tabuleiro.getCasa(x,y);
-                        */
+                        peca = new Rei(casa, jogadorPecasBrancas);
+                        jogadorPecasBrancas.adicionarPeca(peca);
                     }
                 }
                 else if(y == 7) {
                     if(x == 0 || x ==7) {
                         casa = tabuleiro.getCasa(x, y);
-                        peca = new Torre(casa, 'p');
+                        peca = new Torre(casa, jogadorPecasPretas);
+                        jogadorPecasPretas.adicionarPeca(peca);
                     }
                     else if(x == 1 || x == 6) {
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Cavalo(casa, 'p');
+                        peca = new Cavalo(casa, jogadorPecasPretas);
+                        jogadorPecasPretas.adicionarPeca(peca);
                     }
                     else if(x == 2 || x == 5) {
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Bispo(casa, 'p');
+                        peca = new Bispo(casa, jogadorPecasPretas);
+                        jogadorPecasPretas.adicionarPeca(peca);
                     }
                     else if(x == 3) {
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Rainha(casa, 'p');
+                        peca = new Rainha(casa, jogadorPecasPretas);
+                        jogadorPecasPretas.adicionarPeca(peca);
                     }
                     else {
-                        /* REI PRETO
                         casa = tabuleiro.getCasa(x,y);
-                        */
+                        peca = new Rei(casa, jogadorPecasPretas);
+                        jogadorPecasPretas.adicionarPeca(peca);
                     }
                 }
                 else if(y == 1) {
                     casa = tabuleiro.getCasa(x,y);
-                    peca = new Peao(casa, 'b', 1);
+                    peca = new Peao(casa, jogadorPecasBrancas, 1);
+                    jogadorPecasBrancas.adicionarPeca(peca);
                 }
                 else if(y == 6) {
                     casa = tabuleiro.getCasa(x,y);
-                    peca = new Peao(casa, 'p', -1);
+                    peca = new Peao(casa, jogadorPecasPretas, -1);
+                    jogadorPecasPretas.adicionarPeca(peca);
                 }
             }
         }
@@ -119,5 +133,13 @@ public class Jogo {
      */
     public Tabuleiro getTabuleiro() {
         return tabuleiro;
+    }
+    
+    public Jogador getJogadorPecasBrancas() {
+        return jogadorPecasBrancas;
+    }
+    
+    public Jogador getJogadorPecasPretas() {
+        return jogadorPecasPretas;
     }
 }

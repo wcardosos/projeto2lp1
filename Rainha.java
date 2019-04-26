@@ -1,7 +1,7 @@
 public class Rainha extends Peca {
 
-	public Rainha(Casa casa, char cor) {
-		super(casa, cor);
+	public Rainha(Casa casa, Jogador jogador) {
+		super(casa, jogador);
 	}
 
 	public boolean haPecas(Tabuleiro tabuleiro, Casa destino) {

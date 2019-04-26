@@ -5,8 +5,8 @@ public class Peao extends Peca {
 	private boolean promocao;
 	private boolean captura;
 
-	public Peao(Casa casa, char cor, int sentido) {
-		super(casa, cor);
+	public Peao(Casa casa, Jogador jogador, int sentido) {
+		super(casa, jogador);
 		this.sentido = sentido;
 		this.movimentos = 0;
 		this.promocao = false;
@@ -36,7 +36,7 @@ public class Peao extends Peca {
 		}
 		if(destino.getY() == casa.getY() + sentido) {
 			if((destino.getX() == casa.getX() + 1 || destino.getX() == casa.getX() - 1) && destino.getPeca() != null) {
-				if(destino.getPeca().getCor() != cor) {
+				if(destino.getPeca().getJogador() != jogador) {
 					captura = true;
 					movimentoValido = true;
 				}
@@ -63,15 +63,11 @@ public class Peao extends Peca {
 	public void verificarPromocao() {
 		if(sentido == 1) {
 			if(casa.getY() == 7) {
-				Peca peca = casa.getPeca();
-	        		peca = new Rainha(casa, 'b');
 				promocao = true;
 			}
 		}
 		else if(sentido == -1) {
 			if(casa.getY() == 0) {
-				Peca peca = casa.getPeca();
-	        		peca = new Rainha(casa, 'p');
 				promocao = true;
 			}
 		}

@@ -1,7 +1,7 @@
 public class Torre extends Peca {
 
-    public Torre(Casa casa, char cor) {
-        super(casa, cor);
+    public Torre(Casa casa, Jogador jogador) {
+        super(casa, jogador);
     }
 
     public boolean haPecas(Tabuleiro tabuleiro, Casa destino) {

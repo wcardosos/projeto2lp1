@@ -81,7 +81,7 @@ public class TabuleiroGUI extends JPanel {
                 if (casa.possuiPeca()) {
                     Peca peca = casa.getPeca();
 
-                    if(peca.getCor() == 'b') {
+                    if(jogo.getJogadorPecasBrancas().getPecas().contains(peca)) {
                         if(peca instanceof Torre) {
                             casaGUI.desenharTorreBranca();
                         }
@@ -93,6 +93,9 @@ public class TabuleiroGUI extends JPanel {
                         }
                         else if(peca instanceof Cavalo) {
                             casaGUI.desenharCavaloBranco();
+                        }
+                        else if(peca instanceof Rei) {
+                            casaGUI.desenharReiBranco();
                         }
                         else if(peca instanceof Peao) {
                             casaGUI.desenharPeaoBranco();
@@ -111,6 +114,9 @@ public class TabuleiroGUI extends JPanel {
                         }
                         else if(peca instanceof Cavalo) {
                             casaGUI.desenharCavaloPreto();
+                        }
+                        else if(peca instanceof Rei) {
+                            casaGUI.desenharReiPreto();
                         }
                         else if(peca instanceof Peao) {
                             casaGUI.desenharPeaoPreto();
