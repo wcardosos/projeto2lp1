@@ -12,6 +12,12 @@ public class Rei extends Peca {
 		if(xequeTorre(tabuleiro, destino)) {
 			return true;
 		}
+		if(xequeBispo(tabuleiro, destino)) {
+			return true;
+		}
+		if(xequeRainha(tabuleiro, destino)) {
+			return true;
+		}
 
 		return false;
 	}
@@ -140,6 +146,178 @@ public class Rei extends Peca {
 					break;
 				}
 				
+			}
+		}
+
+		return false;
+	}
+
+	public boolean xequeBispo(Tabuleiro tabuleiro, Casa destino) {
+		int aux;
+		Peca pecaVerificacao;
+
+		aux = destino.getX() + 1;
+		for(int y = destino.getY() + 1; y <= 7 && aux <= 7; y++, aux++) {
+			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
+			if(pecaVerificacao != null) {
+				if(pecaVerificacao instanceof Bispo) {
+					return true;
+				}
+				else {
+					break;
+				}
+			}
+		}
+
+		aux = destino.getX() + 1;
+		for(int y = destino.getY() - 1; y >= 0 && aux <= 7; y--, aux++) {
+			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
+			if(pecaVerificacao != null) {
+				if(pecaVerificacao instanceof Bispo) {
+					return true;
+				}
+				else {
+					break;
+				}
+			}
+		}
+		
+
+		aux = destino.getX() - 1;
+		for(int y = destino.getY() + 1; y <= 7 && aux >= 0; y++, aux--) {
+			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
+			if(pecaVerificacao != null) {
+				if(pecaVerificacao instanceof Bispo) {
+					return true;
+				}
+				else {
+					break;
+				}
+			}
+		}
+
+		aux = destino.getX() - 1;
+		for(int y = destino.getY() - 1; y >= 0 && aux >= 0; y--, aux--) {
+			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
+			if(pecaVerificacao != null) {
+				if(pecaVerificacao instanceof Bispo) {
+					return true;
+				}
+				else {
+					break;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	public boolean xequeRainha(Tabuleiro tabuleiro, Casa destino) {
+		int aux;
+		Peca pecaVerificacao;
+
+		for(int y = destino.getY() + 1; y <= 7; y++) {
+			pecaVerificacao = tabuleiro.getCasa(destino.getX(), y).getPeca();
+			if(pecaVerificacao != null) {
+				if(pecaVerificacao instanceof Rainha) {
+					return true;
+				}
+				else {
+					break;
+				}
+				
+			}
+		}
+
+		for(int y = destino.getY() - 1; y >= 0; y--) {
+			pecaVerificacao = tabuleiro.getCasa(destino.getX(), y).getPeca();
+			if(pecaVerificacao != null) {
+				if(pecaVerificacao instanceof Rainha) {
+					return true;
+				}
+				else {
+					break;
+				}
+				
+			}
+		}
+
+		for(int x = destino.getX() + 1; x <= 7; x++) {
+			pecaVerificacao = tabuleiro.getCasa(x, destino.getY()).getPeca();
+			if(pecaVerificacao != null) {
+				if(pecaVerificacao instanceof Rainha) {
+					return true;
+				}
+				else {
+					break;
+				}
+				
+			}
+		}
+
+		for(int x = destino.getX() - 1; x >= 0; x--) {
+			pecaVerificacao = tabuleiro.getCasa(x, destino.getY()).getPeca();
+			if(pecaVerificacao != null) {
+				if(pecaVerificacao instanceof Rainha) {
+					return true;
+				}
+				else {
+					break;
+				}
+				
+			}
+		}
+
+		aux = destino.getX() + 1;
+		for(int y = destino.getY() + 1; y <= 7 && aux <= 7; y++, aux++) {
+			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
+			if(pecaVerificacao != null) {
+				if(pecaVerificacao instanceof Rainha) {
+					return true;
+				}
+				else {
+					break;
+				}
+			}
+		}
+
+		aux = destino.getX() + 1;
+		for(int y = destino.getY() - 1; y >= 0 && aux <= 7; y--, aux++) {
+			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
+			if(pecaVerificacao != null) {
+				if(pecaVerificacao instanceof Rainha) {
+					return true;
+				}
+				else {
+					break;
+				}
+			}
+		}
+		
+
+		aux = destino.getX() - 1;
+		for(int y = destino.getY() + 1; y <= 7 && aux >= 0; y++, aux--) {
+			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
+			if(pecaVerificacao != null) {
+				if(pecaVerificacao instanceof Rainha) {
+					return true;
+				}
+				else {
+					break;
+				}
+			}
+		}
+
+		aux = destino.getX() - 1;
+		for(int y = destino.getY() - 1; y >= 0 && aux >= 0; y--, aux--) {
+			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
+			if(pecaVerificacao != null) {
+				if(pecaVerificacao instanceof Rainha) {
+					return true;
+				}
+				else {
+					break;
+				}
 			}
 		}
 
