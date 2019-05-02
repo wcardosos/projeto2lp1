@@ -18,6 +18,13 @@ public class Rei extends Peca {
 		if(xequeRainha(tabuleiro, destino)) {
 			return true;
 		}
+		if(xequeCavalo(tabuleiro, destino)) {
+			return true;
+		}
+		System.out.println("Chamando xequePeao");
+		if(xequePeao(tabuleiro, destino)) {
+			return true;
+		}
 
 		return false;
 	}
@@ -100,7 +107,7 @@ public class Rei extends Peca {
 		for(int y = destino.getY() + 1; y <= 7; y++) {
 			pecaVerificacao = tabuleiro.getCasa(destino.getX(), y).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Torre) {
+				if(pecaVerificacao instanceof Torre && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -113,7 +120,7 @@ public class Rei extends Peca {
 		for(int y = destino.getY() - 1; y >= 0; y--) {
 			pecaVerificacao = tabuleiro.getCasa(destino.getX(), y).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Torre) {
+				if(pecaVerificacao instanceof Torre && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -126,7 +133,7 @@ public class Rei extends Peca {
 		for(int x = destino.getX() + 1; x <= 7; x++) {
 			pecaVerificacao = tabuleiro.getCasa(x, destino.getY()).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Torre) {
+				if(pecaVerificacao instanceof Torre && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -139,7 +146,7 @@ public class Rei extends Peca {
 		for(int x = destino.getX() - 1; x >= 0; x--) {
 			pecaVerificacao = tabuleiro.getCasa(x, destino.getY()).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Torre) {
+				if(pecaVerificacao instanceof Torre && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -160,7 +167,7 @@ public class Rei extends Peca {
 		for(int y = destino.getY() + 1; y <= 7 && aux <= 7; y++, aux++) {
 			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Bispo) {
+				if(pecaVerificacao instanceof Bispo && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -173,7 +180,7 @@ public class Rei extends Peca {
 		for(int y = destino.getY() - 1; y >= 0 && aux <= 7; y--, aux++) {
 			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Bispo) {
+				if(pecaVerificacao instanceof Bispo && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -187,7 +194,7 @@ public class Rei extends Peca {
 		for(int y = destino.getY() + 1; y <= 7 && aux >= 0; y++, aux--) {
 			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Bispo) {
+				if(pecaVerificacao instanceof Bispo && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -200,7 +207,7 @@ public class Rei extends Peca {
 		for(int y = destino.getY() - 1; y >= 0 && aux >= 0; y--, aux--) {
 			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Bispo) {
+				if(pecaVerificacao instanceof Bispo && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -219,7 +226,7 @@ public class Rei extends Peca {
 		for(int y = destino.getY() + 1; y <= 7; y++) {
 			pecaVerificacao = tabuleiro.getCasa(destino.getX(), y).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Rainha) {
+				if(pecaVerificacao instanceof Rainha && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -232,7 +239,7 @@ public class Rei extends Peca {
 		for(int y = destino.getY() - 1; y >= 0; y--) {
 			pecaVerificacao = tabuleiro.getCasa(destino.getX(), y).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Rainha) {
+				if(pecaVerificacao instanceof Rainha && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -245,7 +252,7 @@ public class Rei extends Peca {
 		for(int x = destino.getX() + 1; x <= 7; x++) {
 			pecaVerificacao = tabuleiro.getCasa(x, destino.getY()).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Rainha) {
+				if(pecaVerificacao instanceof Rainha && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -258,7 +265,7 @@ public class Rei extends Peca {
 		for(int x = destino.getX() - 1; x >= 0; x--) {
 			pecaVerificacao = tabuleiro.getCasa(x, destino.getY()).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Rainha) {
+				if(pecaVerificacao instanceof Rainha && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -272,7 +279,7 @@ public class Rei extends Peca {
 		for(int y = destino.getY() + 1; y <= 7 && aux <= 7; y++, aux++) {
 			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Rainha) {
+				if(pecaVerificacao instanceof Rainha && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -285,7 +292,7 @@ public class Rei extends Peca {
 		for(int y = destino.getY() - 1; y >= 0 && aux <= 7; y--, aux++) {
 			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Rainha) {
+				if(pecaVerificacao instanceof Rainha && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -299,7 +306,7 @@ public class Rei extends Peca {
 		for(int y = destino.getY() + 1; y <= 7 && aux >= 0; y++, aux--) {
 			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Rainha) {
+				if(pecaVerificacao instanceof Rainha && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
@@ -312,11 +319,69 @@ public class Rei extends Peca {
 		for(int y = destino.getY() - 1; y >= 0 && aux >= 0; y--, aux--) {
 			pecaVerificacao = tabuleiro.getCasa(aux, y).getPeca();
 			if(pecaVerificacao != null) {
-				if(pecaVerificacao instanceof Rainha) {
+				if(pecaVerificacao instanceof Rainha && pecaVerificacao.getJogador() != jogador) {
 					return true;
 				}
 				else {
 					break;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	public boolean xequeCavalo(Tabuleiro tabuleiro, Casa destino) {
+		Peca pecaVerificacao;
+
+		for(int y = destino.getY() + 2; y >= destino.getY() - 2; y -= 4) {
+			for(int x = destino.getX() + 1; x >= destino.getX() - 1; x -= 2) {
+				if(x >= 0 && x <= 7 && y >= 0 && y <= 7) {
+					pecaVerificacao = tabuleiro.getCasa(x,y).getPeca();
+					if(pecaVerificacao != null) {
+						if(pecaVerificacao instanceof Cavalo && pecaVerificacao.getJogador() != jogador) {
+							return true;
+						}
+					}
+				}
+			}
+		}
+
+		for(int y = destino.getY() + 1; y >= destino.getY() - 1; y -= 2) {
+			for(int x = destino.getX() + 2; x >= destino.getX() - 2; x -= 4) {
+				if(x >= 0 && x <= 7 && y >= 0 && y <= 7) {
+					pecaVerificacao = tabuleiro.getCasa(x,y).getPeca();
+					if(pecaVerificacao != null) {
+						if(pecaVerificacao.getJogador() != jogador) {
+							if(pecaVerificacao instanceof Cavalo) {
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+	public boolean xequePeao(Tabuleiro tabuleiro, Casa destino) {
+		Peca pecaVerificacao;
+		Peao peao;
+
+		for(int y = destino.getY() + 1; y >= destino.getY() - 1; y -= 2) {
+			for(int x = destino.getX() + 1; x >= destino.getX() - 1; x -= 2) {
+				if(x >= 0 && x <= 7 && y >= 0 && y <= 7) {
+					pecaVerificacao = tabuleiro.getCasa(x,y).getPeca();
+					if(pecaVerificacao != null) {
+						if(pecaVerificacao.getJogador() != jogador) {
+							if(pecaVerificacao instanceof Peao) {
+								peao = (Peao) pecaVerificacao;
+								if(peao.getCasa().getY() + peao.getSentido() == destino.getY()){
+									return true;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
