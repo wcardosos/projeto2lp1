@@ -27,7 +27,11 @@ public class JanelaPrincipal extends JFrame {
     public void reagir(CasaGUI casaClicada) {
         Casa casa = jogo.getTabuleiro().getCasa(casaClicada.getPosicaoX(), casaClicada.getPosicaoY());
         if (primeiroClique) {
-            if(jogo.getTurno() && casa.getPeca() != null && jogo.getJogadorPecasPretas().getPecas().contains(casa.getPeca())) {
+            if(jogo.getXequeMate()) {
+                JOptionPane.showMessageDialog(this, "Fim de jogo!");
+                criarNovoJogo();
+            }
+            else if(jogo.getTurno() && casa.getPeca() != null && jogo.getJogadorPecasPretas().getPecas().contains(casa.getPeca())) {
                 JOptionPane.showMessageDialog(this, "Vez das peças brancas!");
             }
             else if(!jogo.getTurno() && casa.getPeca() != null && jogo.getJogadorPecasBrancas().getPecas().contains(casa.getPeca())) {

@@ -12,6 +12,7 @@ public class Jogo {
     private Jogador jogadorPecasBrancas;
     private Jogador jogadorPecasPretas;
     private boolean xeque;
+    private boolean xequeMate;
 
     public Jogo() {
         tabuleiro = new Tabuleiro();
@@ -19,6 +20,7 @@ public class Jogo {
         jogadorPecasPretas = new Jogador();
         turno = true;
         xeque = false;
+        xequeMate = false;
         criarPecas();
     }
     
@@ -53,7 +55,7 @@ public class Jogo {
                         peca = new Rainha(casa, jogadorPecasBrancas);
                         jogadorPecasBrancas.adicionarPeca(peca);
                     }
-                    else {
+                    else if(x == 4) {
                         casa = tabuleiro.getCasa(x,y);
                         Rei rei = new Rei(casa, jogadorPecasBrancas);
                         jogadorPecasBrancas.setRei(rei);
@@ -81,7 +83,7 @@ public class Jogo {
                         peca = new Rainha(casa, jogadorPecasPretas);
                         jogadorPecasPretas.adicionarPeca(peca);
                     }
-                    else {
+                    else if(x == 4) {
                         casa = tabuleiro.getCasa(x,y);
                         Rei rei = new Rei(casa, jogadorPecasPretas);
                         jogadorPecasPretas.setRei(rei);
@@ -141,10 +143,10 @@ public class Jogo {
                         setTurno();
                     }
                 }
-
-
             }
         }
+
+        verificaXequesMate();
     
     }
 
@@ -192,6 +194,18 @@ public class Jogo {
     public void verificaXeques() {
         jogadorPecasBrancas.getRei().verificaXeque(tabuleiro);
         jogadorPecasPretas.getRei().verificaXeque(tabuleiro);
+    }
+
+    public void verificaXequesMate() {
+        xequeMate = jogadorPecasBrancas.getRei().verificaXequeMate(tabuleiro);
+
+        if(!xequeMate) {
+            xequeMate = jogadorPecasPretas.getRei().verificaXequeMate(tabuleiro);
+        }
+    }
+
+    public boolean getXequeMate() {
+        return xequeMate;
     }
 
 }

@@ -63,40 +63,23 @@ public class Rei extends Peca {
 		int y = destino.getY() + 1;
 
 		while(y >= destino.getY() - 1) {
-			if(y < 0) {
-				break;
-			}
-			else if(y > 7) {
-				y--;
-				continue;
-			}
-
 			x = destino.getX() + 1;
 			while(x >= destino.getX() - 1) {
-				if(x < 0) {
-					break;
-					
-				}
-				else if(x > 7) {
-					x--;
-					continue;
-
-				}
-				
-				if(y == destino.getY() && x == destino.getX()) {
-					x--;
-				}
-				else if(tabuleiro.getCasa(x,y).getPeca() != null) {
-					pecaVerificacao = tabuleiro.getCasa(x,y).getPeca();
-					if(pecaVerificacao.getJogador() == jogador) {
+				if(x >= 0 && x <= 7 && y >= 0 && y <= 7) {
+					if(y == destino.getY() && x == destino.getX()) {
 						x--;
 					}
-					else if(pecaVerificacao instanceof Rei) {
-						reiEncontrado = true;
-						break;
+					else if(tabuleiro.getCasa(x,y).getPeca() != null) {
+						pecaVerificacao = tabuleiro.getCasa(x,y).getPeca();
+						if(pecaVerificacao.getJogador() == jogador) {
+							x--;
+						}
+						else if(pecaVerificacao instanceof Rei) {
+							reiEncontrado = true;
+							break;
+						}
 					}
 				}
-
 				x--;
 			}
 
@@ -414,6 +397,7 @@ public class Rei extends Peca {
 
 					if(!haPecas(tabuleiro, tabuleiro.getCasa(x,y))) {
 						xequeMate = false;
+						break;
 					}
 				}
 			}
