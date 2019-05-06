@@ -1,7 +1,10 @@
 public class Torre extends Peca {
+    
+    private int movimentos;
 
     public Torre(Casa casa, Jogador jogador) {
         super(casa, jogador);
+        movimentos = 0;
     }
 
     public boolean haPecas(Tabuleiro tabuleiro, Casa destino) {
@@ -54,12 +57,17 @@ public class Torre extends Peca {
     }
 
     public boolean movimentoValido(Casa destino) {
-		if(casa.getX() == destino.getX() || casa.getY() == destino.getY()) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
+
+        if(movimentos == 0) {
+            movimentos++;
+        }
+        
+		    if(casa.getX() == destino.getX() || casa.getY() == destino.getY()) {
+		        return true;
+		    }
+		    else {
+		        return false;
+		    }
+	 }
 
 }

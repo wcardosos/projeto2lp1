@@ -1,7 +1,8 @@
 public class Peao extends Peca {
 
 	private int sentido; // Sentido -> cima, baixo ; Direcao -> vertical, horizontal
-	private int movimentos; 
+	private int movimentos;
+	private boolean movimentoDuplo; 
 	private boolean promocao;
 	private boolean captura;
 
@@ -9,6 +10,7 @@ public class Peao extends Peca {
 		super(casa, jogador);
 		this.sentido = sentido;
 		this.movimentos = 0;
+		this.movimentoDuplo = false;
 		this.promocao = false;
 		this.captura = false;
 	}
@@ -26,13 +28,10 @@ public class Peao extends Peca {
 
 	public boolean movimentoValido(Casa destino) {
 		boolean movimentoValido = false;
-		if (movimentos < 1) {
-			if(destino.getX() == casa.getX() && (destino.getY() == casa.getY() + sentido || destino.getY() == casa.getY() + (2 * sentido))) {
-				movimentos++;
-				movimentoValido = true;
-				mover(destino);
-			}
-
+		if (movimentos < 1 && destino.getX() == casa.getX() && (destino.getY() == casa.getY() + (2 * sentido)) && destino.getPeca() == null) {
+			movimentos++;
+			movimentoDuplo = true;
+			movimentoValido = true;
 		}
 		if(destino.getY() == casa.getY() + sentido) {
 			if((destino.getX() == casa.getX() + 1 || destino.getX() == casa.getX() - 1) && destino.getPeca() != null) {
@@ -60,6 +59,10 @@ public class Peao extends Peca {
 		}
 	}
 
+	/*public boolean enPassant(Tabuleiro tabuleiro, Casa destino) {
+		
+	}*/
+
 	public void verificarPromocao() {
 		if(sentido == 1) {
 			if(casa.getY() == 7) {
@@ -75,5 +78,9 @@ public class Peao extends Peca {
 
 	public int getMovimentos() {
 		return movimentos;
+	}
+
+	public int getSentido() {
+		return sentido;
 	}
 }

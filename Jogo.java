@@ -7,14 +7,18 @@
  */
 public class Jogo {
 
+    private boolean turno;
     private Tabuleiro tabuleiro;
     private Jogador jogadorPecasBrancas;
     private Jogador jogadorPecasPretas;
+    private boolean xeque;
 
     public Jogo() {
         tabuleiro = new Tabuleiro();
         jogadorPecasBrancas = new Jogador();
         jogadorPecasPretas = new Jogador();
+        turno = true;
+        xeque = false;
         criarPecas();
     }
     
@@ -51,8 +55,9 @@ public class Jogo {
                     }
                     else {
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Rei(casa, jogadorPecasBrancas);
-                        jogadorPecasBrancas.adicionarPeca(peca);
+                        Rei rei = new Rei(casa, jogadorPecasBrancas);
+                        jogadorPecasBrancas.setRei(rei);
+                        jogadorPecasBrancas.adicionarPeca(rei);
                     }
                 }
                 else if(y == 7) {
@@ -78,8 +83,9 @@ public class Jogo {
                     }
                     else {
                         casa = tabuleiro.getCasa(x,y);
-                        peca = new Rei(casa, jogadorPecasPretas);
-                        jogadorPecasPretas.adicionarPeca(peca);
+                        Rei rei = new Rei(casa, jogadorPecasPretas);
+                        jogadorPecasPretas.setRei(rei);
+                        jogadorPecasPretas.adicionarPeca(rei);
                     }
                 }
                 else if(y == 1) {
@@ -109,16 +115,34 @@ public class Jogo {
         Casa origem = tabuleiro.getCasa(origemX, origemY);
         Casa destino = tabuleiro.getCasa(destinoX, destinoY);
         Peca peca = origem.getPeca();
+        Tabuleiro tabuleiroAuxiliar = tabuleiro;
 
         if(peca.movimentoValido(destino)) {
             if(!(peca.haPecas(tabuleiro, destino))) {
                 if(peca.captura(destino)){
                     eliminarPeca(destino);
                     peca.mover(destino);
+                    setXeque();
+                    if(xeque) {
+                        peca.mover(origem);
+                    }
+                    else {
+                        setTurno();
+                    }
+
                 }
                 else if(peca.podeMover(destino)) {
-                peca.mover(destino);
+                    peca.mover(destino);
+                    setXeque();
+                    if(xeque) {
+                        peca.mover(origem);
+                    }
+                    else {
+                        setTurno();
+                    }
                 }
+
+
             }
         }
     
@@ -142,4 +166,32 @@ public class Jogo {
     public Jogador getJogadorPecasPretas() {
         return jogadorPecasPretas;
     }
+
+    public void setTurno() {
+        turno = !turno;
+    }
+
+    public boolean getTurno() {
+        return turno;
+    }
+
+    public void setXeque() {
+        verificaXeques();
+        if(turno) {
+            xeque = jogadorPecasBrancas.getReiEmXeque();
+        }
+        else {
+            xeque = jogadorPecasPretas.getReiEmXeque();
+        }
+    }
+
+    public boolean getXeque() {
+        return xeque;
+    }
+
+    public void verificaXeques() {
+        jogadorPecasBrancas.getRei().verificaXeque(tabuleiro);
+        jogadorPecasPretas.getRei().verificaXeque(tabuleiro);
+    }
+
 }

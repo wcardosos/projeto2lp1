@@ -25,8 +25,16 @@ public class JanelaPrincipal extends JFrame {
      * @param casaClicada Casa que o jogador clicou.
      */
     public void reagir(CasaGUI casaClicada) {
+        Casa casa = jogo.getTabuleiro().getCasa(casaClicada.getPosicaoX(), casaClicada.getPosicaoY());
         if (primeiroClique) {
-            if (casaClicada.possuiPeca()) {
+            if(jogo.getTurno() && casa.getPeca() != null && jogo.getJogadorPecasPretas().getPecas().contains(casa.getPeca())) {
+                JOptionPane.showMessageDialog(this, "Vez das peças brancas!");
+            }
+            else if(!jogo.getTurno() && casa.getPeca() != null && jogo.getJogadorPecasBrancas().getPecas().contains(casa.getPeca())) {
+                JOptionPane.showMessageDialog(this, "Vez das peças pretas!");
+            }
+
+            else if (casaClicada.possuiPeca()) {
                 casaClicadaOrigem = casaClicada;
                 casaClicadaOrigem.destacar();
                 primeiroClique = false;

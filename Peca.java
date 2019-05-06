@@ -48,6 +48,10 @@ public abstract class Peca {
         }
     }
 
+    public Casa getCasa() {
+        return casa;
+    }
+
     public Jogador getJogador() {
         return jogador;
     }

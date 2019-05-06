@@ -1,7 +1,14 @@
 public class Rei extends Peca {
 
+	private int movimentos;
+	private boolean xeque;
+	private boolean xequeMate;
+
 	public Rei(Casa casa, Jogador jogador) {
 		super(casa, jogador);
+		movimentos = 0;
+		xeque = false;
+		xequeMate = false;
 	}
 
 	public boolean haPecas(Tabuleiro tabuleiro, Casa destino) {
@@ -21,7 +28,6 @@ public class Rei extends Peca {
 		if(xequeCavalo(tabuleiro, destino)) {
 			return true;
 		}
-		System.out.println("Chamando xequePeao");
 		if(xequePeao(tabuleiro, destino)) {
 			return true;
 		}
@@ -41,6 +47,10 @@ public class Rei extends Peca {
 			if(destino.getX() == casa.getX() + 1 || destino.getX() == casa.getX() - 1) {
 				movimentoValido = true;
 			}
+		}
+
+		if(movimentos == 0) {
+			movimentos++;
 		}
 
 		return movimentoValido;
@@ -387,5 +397,41 @@ public class Rei extends Peca {
 		}
 
 		return false;
+	}
+
+	public void verificaXeque(Tabuleiro tabuleiro) {
+		xeque = haPecas(tabuleiro, casa);
+	}
+
+	public boolean verificaXequeMate(Tabuleiro tabuleiro) {
+		boolean xequeMate = true;
+		for(int y = casa.getY() + 1; y >= casa.getY() - 1; y--) {
+			for(int x = casa.getX() + 1; x >= casa.getX() - 1; x--) {
+				if(x >= 0 && x <= 7 && y >= 0 && y <= 7) {
+					if(x == casa.getX() && y == casa.getY()) {
+						continue;
+					}
+
+					if(!haPecas(tabuleiro, tabuleiro.getCasa(x,y))) {
+						xequeMate = false;
+					}
+				}
+			}
+
+			if(!xequeMate) {
+				break;
+			}
+		}
+
+		return xequeMate;
+	}
+
+
+	public boolean getXeque() {
+		return xeque;
+	}
+
+	public boolean getXequeMate() {
+		return xequeMate;
 	}
 }
