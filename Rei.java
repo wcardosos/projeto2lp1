@@ -1,3 +1,8 @@
+/**
+ * Classe que representa a peça Rei de um jogo de xadrez.
+ * @author Wagner Cardoso &lt;wagnersilva@cc.ci.ufpb.br&gt;
+ */
+
 public class Rei extends Peca {
 
 	private int movimentos;
@@ -11,6 +16,11 @@ public class Rei extends Peca {
 		xequeMate = false;
 	}
 
+	/**
+     * Verifica se há peças adversárias de tal modo que o rei
+     * possa ficar em xeque.
+     * @return se o rei ficará em xeque ao se movimentar.
+     */
 	public boolean haPecas(Tabuleiro tabuleiro, Casa destino) {
 
 		if(xequeRei(tabuleiro, destino)) {
@@ -35,6 +45,10 @@ public class Rei extends Peca {
 		return false;
 	}
 
+	/**
+     * Verifica se o movimento é válido de acordo com as regras de
+     * movimentação da peça.
+     */
 	public boolean movimentoValido(Casa destino) {
 		boolean movimentoValido = false;
 		if(destino.getX() == casa.getX() && (destino.getY() == casa.getY() + 1 || destino.getY() == casa.getY() - 1)) {
@@ -56,6 +70,10 @@ public class Rei extends Peca {
 		return movimentoValido;
 	}
 
+	/**
+     * Verifica se há um rei adversário nas proximidades da
+     * casa de destino.
+     */
 	public boolean xequeRei(Tabuleiro tabuleiro, Casa destino) {
 		Peca pecaVerificacao;
 		boolean reiEncontrado = false;
@@ -94,6 +112,10 @@ public class Rei extends Peca {
 		return reiEncontrado;
 	}
 
+	/**
+     * Verifica se há uma torre que pode capturar o rei após
+     * a movimentação.
+     */
 	public boolean xequeTorre(Tabuleiro tabuleiro, Casa destino) {
 		Peca pecaVerificacao;
 
@@ -152,6 +174,10 @@ public class Rei extends Peca {
 		return false;
 	}
 
+	/**
+     * Verifica se há um bispo que pode capturar o rei após
+	 * a mmovimentação.
+     */
 	public boolean xequeBispo(Tabuleiro tabuleiro, Casa destino) {
 		int aux;
 		Peca pecaVerificacao;
@@ -212,6 +238,10 @@ public class Rei extends Peca {
 		return false;
 	}
 
+	/**
+     * Verifica se há uma rainha que pode capturar o rei após
+     * a movimentação.
+     */
 	public boolean xequeRainha(Tabuleiro tabuleiro, Casa destino) {
 		int aux;
 		Peca pecaVerificacao;
@@ -357,6 +387,11 @@ public class Rei extends Peca {
 
 		return false;
 	}
+
+	/**
+     * Verifica se há um peão que pode capturar o rei após
+     * uma movimentação.
+     */
 	public boolean xequePeao(Tabuleiro tabuleiro, Casa destino) {
 		Peca pecaVerificacao;
 		Peao peao;
@@ -382,10 +417,16 @@ public class Rei extends Peca {
 		return false;
 	}
 
+	/**
+     * Verifica se o rei está em xeque e guarda o resuultado em xeque.
+     */
 	public void verificaXeque(Tabuleiro tabuleiro) {
 		xeque = haPecas(tabuleiro, casa);
 	}
 
+	/**
+     * Verifica se o rei está em xeque mate.
+     */
 	public boolean verificaXequeMate(Tabuleiro tabuleiro) {
 		boolean xequeMate = true;
 		for(int y = casa.getY() + 1; y >= casa.getY() - 1; y--) {
@@ -409,7 +450,6 @@ public class Rei extends Peca {
 
 		return xequeMate;
 	}
-
 
 	public boolean getXeque() {
 		return xeque;

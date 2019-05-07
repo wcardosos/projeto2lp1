@@ -1,3 +1,8 @@
+/**
+ * Classe que representa a peça Torre de um jogo de xadrez.
+ * @author Wagner Cardoso &lt;wagnersilva@cc.ci.ufpb.br&gt;
+ */
+
 public class Torre extends Peca {
     
     private int movimentos;
@@ -7,6 +12,14 @@ public class Torre extends Peca {
         movimentos = 0;
     }
 
+    /**
+     * Verifica se há peças entre a casa de origem da peça e
+     * a casa para onde se deseja fazer o movimento.
+     * @param tabuleiro para verificar as peças durante o caminho.
+     * @param destino casa para onde se deseja fazer o movimento.
+     * @return se há peças durante entre a casa de origem e a
+     * casa de destino.
+     */
     public boolean haPecas(Tabuleiro tabuleiro, Casa destino) {
         boolean haPecas = false;
         
@@ -56,6 +69,10 @@ public class Torre extends Peca {
     
     }
 
+    /**
+     * Verifica se o movimento é válido de acordo com as regras
+     * de movimentação da peça,
+     */
     public boolean movimentoValido(Casa destino) {
 
         if(movimentos == 0) {

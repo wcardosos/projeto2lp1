@@ -4,6 +4,7 @@
  * 
  * @author Alan Moraes &lt;alan@ci.ufpb.br&gt;
  * @author Leonardo Villeth &lt;lvilleth@cc.ci.ufpb.br&gt;
+ * @author Wagner Cardoso &lt;wagnersilva@cc.ci.ufpb.br&gt;
  */
 public class Jogo {
 
@@ -25,8 +26,8 @@ public class Jogo {
     }
     
     /**
-     * Posiciona pe�as no tabuleiro.
-     * Utilizado na inicializa�ao do jogo.
+     * Posiciona peças no tabuleiro.
+     * Utilizado na inicialização do jogo.
      */
     private void criarPecas() {
         Casa casa;
@@ -105,7 +106,7 @@ public class Jogo {
     }
     
     /**
-     * Comanda uma Pe�a na posicao (origemX, origemY) fazer um movimento 
+     * Comanda uma Peca na posicao (origemX, origemY) fazer um movimento 
      * para (destinoX, destinoY).
      * 
      * @param origemX linha da Casa de origem.
@@ -150,6 +151,10 @@ public class Jogo {
     
     }
 
+    /**
+     * Elimina uma peça do tabuleiro.
+     * @param casa casa onde a peça está.
+     */
     public void eliminarPeca(Casa casa) {
         casa.removerPeca();
     }
@@ -161,22 +166,37 @@ public class Jogo {
         return tabuleiro;
     }
     
+    /**
+     * @return jogador das peças brancas.
+     */
     public Jogador getJogadorPecasBrancas() {
         return jogadorPecasBrancas;
     }
     
+    /**
+     * @return jogador das peças pretas.
+     */
     public Jogador getJogadorPecasPretas() {
         return jogadorPecasPretas;
     }
 
+    /**
+     * Muda o turno das jogadas.
+     */
     public void setTurno() {
         turno = !turno;
     }
 
+    /**
+     * @return turno que está sendo jogado.
+     */
     public boolean getTurno() {
         return turno;
     }
 
+    /**
+     * Define se há um rei em xeque.
+     */
     public void setXeque() {
         verificaXeques();
         if(turno) {
@@ -187,15 +207,24 @@ public class Jogo {
         }
     }
 
+    /**
+     * @return se algum rei está em xeque.
+     */
     public boolean getXeque() {
         return xeque;
     }
 
+    /**
+     * Verifica se algum dos reis está em xeque.
+     */
     public void verificaXeques() {
         jogadorPecasBrancas.getRei().verificaXeque(tabuleiro);
         jogadorPecasPretas.getRei().verificaXeque(tabuleiro);
     }
 
+    /**
+     * Verifica se houve um xeque mate.
+     */
     public void verificaXequesMate() {
         xequeMate = jogadorPecasBrancas.getRei().verificaXequeMate(tabuleiro);
 
@@ -204,6 +233,9 @@ public class Jogo {
         }
     }
 
+    /**
+     * @return se há um xeque mate.
+     */
     public boolean getXequeMate() {
         return xequeMate;
     }
