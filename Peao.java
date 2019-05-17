@@ -43,11 +43,11 @@ public class Peao extends Peca {
      */
 	public boolean movimentoValido(Casa destino) {
 		boolean movimentoValido = false;
-		if (movimentos < 1 && destino.getX() == casa.getX() && (destino.getY() == casa.getY() + (2 * sentido)) && destino.getPeca() == null) {
+		if (movimentos < 1 && destino.getX() == casa.getX() && (destino.getY() == casa.getY() + (2 * sentido) || destino.getY() == casa.getY() + sentido) && destino.getPeca() == null) {
 			movimentos++;
 			movimentoValido = true;
 		}
-		if(destino.getY() == casa.getY() + sentido) {
+		else if(movimentos >= 1 && destino.getY() == casa.getY() + sentido) {
 			if((destino.getX() == casa.getX() + 1 || destino.getX() == casa.getX() - 1) && destino.getPeca() != null) {
 				if(destino.getPeca().getJogador() != jogador) {
 					captura = true;
