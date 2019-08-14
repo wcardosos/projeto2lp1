@@ -5,6 +5,7 @@
  * @author Alan Moraes &lt;alan@ci.ufpb.br&gt;
  * @author Leonardo Villeth &lt;lvilleth@cc.ci.ufpb.br&gt;
  * @author Wagner Cardoso &lt;wagnersilva@cc.ci.ufpb.br&gt;
+ * @author Daniel Costa &lt;danielcosta@cc.ci.ufpb.br&gt;
  */
 public class Jogo {
 
